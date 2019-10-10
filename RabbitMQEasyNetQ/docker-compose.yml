@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  rabbitmqeasynetq:
+    image: ${DOCKER_REGISTRY-}rabbitmqeasynetq
+    build:
+      context: .
+      dockerfile: RabbitMQEasyNetQ/Dockerfile
+    depends_on:
+      - rabbit
+
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
